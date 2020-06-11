@@ -1,10 +1,12 @@
 package com.garyfimo.unittestexample.domain.calculador
 
 import com.garyfimo.unittestexample.domain.evaluador.ResultadoEvaluacion
+import com.garyfimo.unittestexample.domain.util.ErrorEvaluacion
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
+import java.lang.IllegalArgumentException
 import kotlin.test.assertFailsWith
 
 @DisplayName("Calculador Unit Test")
@@ -12,19 +14,23 @@ internal class CalculadorUseCaseImplTest {
 
     private val expresionSimple = "4+3.2"
 
-    private val expresionCompleja = "4+3.2*2+6.6"
+    private val expresionCompleja = "4+3.2*2+6.6/3-2"
 
     private val operandos = listOf(
         Operando(valor = "4"),
         Operando(valor = "3.2"),
         Operando(valor = "2"),
-        Operando(valor = "6.6")
+        Operando(valor = "6.6"),
+        Operando(valor = "3"),
+        Operando(valor = "2")
     )
 
     private val operadores = listOf(
         Operador(valor = "+"),
         Operador(valor = "*"),
-        Operador(valor = "+")
+        Operador(valor = "+"),
+        Operador(valor = "/"),
+        Operador(valor = "-")
     )
 
     private val calculadorUseCase by lazy {
@@ -44,7 +50,7 @@ internal class CalculadorUseCaseImplTest {
 
     @Test
     fun `Evalua expresion compleja`() = runBlocking {
-        val resultadoEsperado = "17.0"
+        val resultadoEsperado = "10.6"
         val resultadoObtenido = calculadorUseCase.evaluarExpresion(expresionCompleja)
 
         if (resultadoObtenido is ResultadoEvaluacion.Valor)
@@ -123,6 +129,20 @@ internal class CalculadorUseCaseImplTest {
                 segundoOperando
             )
         )
+    }
+
+    @Test
+    fun `Ejecuta operador no correcto`() {
+        val operador = "&"
+        val primerOperando = "1"
+        val segundoOperando = "4"
+        assertFailsWith<IllegalArgumentException> {
+            calculadorUseCase.ejecutarOperacion(
+                primerOperando,
+                operador,
+                segundoOperando
+            )
+        }
     }
 
     @Test
@@ -220,7 +240,7 @@ internal class CalculadorUseCaseImplTest {
     fun `Lanza error cuando segundo operando es cero`() {
         val primerOperando = 13.0
         val segundoOperando = 0.0
-        assertFailsWith<NoSePuedeDividirPorCeroException> {
+        assertFailsWith<ErrorEvaluacion.ErrorComputacional> {
             calculadorUseCase.dividir(primerOperando, segundoOperando)
         }
     }

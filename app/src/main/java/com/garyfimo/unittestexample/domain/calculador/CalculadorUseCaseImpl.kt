@@ -2,6 +2,7 @@ package com.garyfimo.unittestexample.domain.calculador
 
 import androidx.annotation.VisibleForTesting
 import com.garyfimo.unittestexample.domain.evaluador.ResultadoEvaluacion
+import com.garyfimo.unittestexample.domain.util.ErrorEvaluacion
 import java.lang.IllegalArgumentException
 
 class CalculadorUseCaseImpl : CalculadorUseCase {
@@ -67,7 +68,7 @@ class CalculadorUseCaseImpl : CalculadorUseCase {
     @VisibleForTesting
     internal fun dividir(primerOperando: Double, segundoOperando: Double): Double {
         if (segundoOperando == 0.0)
-            throw NoSePuedeDividirPorCeroException()
+            throw ErrorEvaluacion.ErrorComputacional()
         return primerOperando / segundoOperando
     }
 
