@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     buildTypes {
@@ -29,9 +29,27 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
+
+    packagingOptions {
+        exclude "META-INF/LICENSE*"
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+
+    // Gradle automatically adds 'android.test.runner' as a dependency.
+    useLibrary 'android.test.runner'
+
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
 
     testOptions.unitTests.all {
         useJUnitPlatform()
@@ -50,10 +68,19 @@ dependencies {
     implementation deps.kotlin.coroutines_android
     implementation deps.kotlin.kotlin_jre
 
-    testImplementation deps.test.junit
-    testRuntimeOnly deps.test.jupiter_engine
-    testRuntimeOnly deps.test.vintage_engine
-    testImplementation deps.test.mockk
-    testImplementation deps.test.kotlin_junit
+    testImplementation deps.unitTest.junit
+    testRuntimeOnly deps.unitTest.jupiter_engine
+    testRuntimeOnly deps.unitTest.vintage_engine
+    testImplementation deps.unitTest.mockk
+    testImplementation deps.unitTest.kotlin_junit
 
+    androidTestImplementation deps.instrumentationTest.espressoCore
+    androidTestImplementation deps.instrumentationTest.junit
+
+    androidTestImplementation deps.instrumentationTest.runner
+    androidTestImplementation deps.instrumentationTest.rules
+    androidTestImplementation deps.instrumentationTest.espressoContrib
+    androidTestImplementation deps.instrumentationTest.espressoIntents
+    androidTestImplementation deps.instrumentationTest.espressoIdlingConcurrent
+    androidTestImplementation deps.instrumentationTest.core
 }
