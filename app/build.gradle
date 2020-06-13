@@ -43,6 +43,7 @@ android {
 
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        unitTests.returnDefaultValues = true
     }
 
     // Gradle automatically adds 'android.test.runner' as a dependency.
@@ -67,7 +68,10 @@ dependencies {
     implementation deps.kotlin.coroutines_core
     implementation deps.kotlin.coroutines_android
     implementation deps.kotlin.kotlin_jre
+    implementation deps.android.fragment_ktx
 
+    testImplementation deps.unitTest.coroutine_test
+    testImplementation deps.unitTest.android_arch_core
     testImplementation deps.unitTest.junit
     testRuntimeOnly deps.unitTest.jupiter_engine
     testRuntimeOnly deps.unitTest.vintage_engine

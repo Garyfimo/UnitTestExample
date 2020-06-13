@@ -43,3 +43,5 @@ Papp/src/androidTest/java/com/garyfimo/unittestexample/util/EspressoExtensions.k
 Oapp/src/androidTest/java/com/garyfimo/unittestexample/util/ScreenshotWatcher.kt,b/0/b0e20bd74e7c83a89f90c629b533b9f4bfc14da7
 €
 Papp/src/androidTest/java/com/garyfimo/unittestexample/ExampleInstrumentedTest.kt,7/f/7f43df5744f4a2210f6dd1882c9b8842aabd6619
+y
+Iapp/src/androidTest/java/com/garyfimo/unittestexample/MainActivityTest.kt,9/6/96946f07fc4f243dbb00487a3ce7ba7b2f5d9526

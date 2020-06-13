@@ -19,11 +19,15 @@ class CalculadorUseCaseImpl : CalculadorUseCase {
                 operadores.elementAtOrNull(1) == null ||
                 !operadores[1].evaluarPrimero
             ) {
-                val resultado = ejecutarOperacion(
-                    primerOperando.valor,
-                    primerOperador.valor,
-                    segundoOperando.valor
-                )
+                val resultado = try {
+                    ejecutarOperacion(
+                        primerOperando.valor,
+                        primerOperador.valor,
+                        segundoOperando.valor
+                    )
+                } catch (ex: ErrorEvaluacion.ErrorComputacional) {
+                    return ResultadoEvaluacion.build { throw ex }
+                }
 
                 operandos.remove(primerOperando)
                 operandos.remove(segundoOperando)
@@ -33,11 +37,16 @@ class CalculadorUseCaseImpl : CalculadorUseCase {
             } else {
                 val tercerOperando = operandos[2]
                 val segundoOperador = operadores[1]
-                val resultado = ejecutarOperacion(
-                    segundoOperando.valor,
-                    segundoOperador.valor,
-                    tercerOperando.valor
-                )
+                val resultado = try {
+                    ejecutarOperacion(
+                        segundoOperando.valor,
+                        segundoOperador.valor,
+                        tercerOperando.valor
+                    )
+                } catch (ex: ErrorEvaluacion.ErrorComputacional) {
+                    return ResultadoEvaluacion.build { throw ex }
+                }
+
 
                 operandos.remove(segundoOperando)
                 operandos.remove(tercerOperando)

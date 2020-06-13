@@ -7,11 +7,14 @@ def versions = [:]
 
 versions.lifecycle = "2.0.0-rc01"
 versions.constraint_layout = "2.0.0-alpha2"
-versions.junit = "5.1.1"
 versions.coroutine_version = "1.0.1"
 versions.android_gradle_plugin = "4.0.0"
+versions.fragment_ktx = "1.2.5"
 versions.kotlin = "1.3.72"
 versions.mockk = "1.9"
+versions.junit = "5.1.1"
+versions.coroutine_test = "1.3.7"
+versions.android_arch_core = "1.1.1"
 versions.androidxTestEspresso = "3.1.0"
 versions.androidxTest = "1.2.0"
 versions.androidxTestCore = "1.2.0"
@@ -24,6 +27,7 @@ def android = [:]
 android.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
 android.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 android.lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+android.fragment_ktx = "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
 deps.android = android
 
 def unitTest = [:]
@@ -33,6 +37,8 @@ unitTest.jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:$versions.juni
 unitTest.vintage_engine = "org.junit.vintage:junit-vintage-engine:$versions.junit"
 unitTest.kotlin_junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 unitTest.mockk = "io.mockk:mockk:$versions.mockk"
+unitTest.coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutine_test"
+unitTest.android_arch_core = "android.arch.core:core-testing:$versions.android_arch_core"
 deps.unitTest = unitTest
 
 def instrumentationTest = [:]
