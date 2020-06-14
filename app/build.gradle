@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -69,6 +70,7 @@ dependencies {
     implementation deps.kotlin.coroutines_android
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.fragment_ktx
+    implementation deps.firebase.analytics
 
     testImplementation deps.unitTest.coroutine_test
     testImplementation deps.unitTest.android_arch_core

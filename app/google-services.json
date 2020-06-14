@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "958276783430",
+    "firebase_url": "https://gfm-unittestexample.firebaseio.com",
+    "project_id": "gfm-unittestexample",
+    "storage_bucket": "gfm-unittestexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958276783430:android:7b74dbccc60dcfcce12947",
+        "android_client_info": {
+          "package_name": "com.garyfimo.unittestexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958276783430-nj92jfutaelbitq45qhmojnkn62c4o1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5l49jayOhVVnU2c1q6G89ko9WMgFsMOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958276783430-nj92jfutaelbitq45qhmojnkn62c4o1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
