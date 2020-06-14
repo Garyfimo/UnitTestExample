@@ -4,21 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/negro_alpha_85"
     tools:context=".ui.MainActivity">
 
     <TextView
         android:id="@+id/tvVisualizadorOperacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="start|center"
         android:minHeight="100dp"
-        app:layout_constraintBottom_toTopOf="@id/tvVisualizadorResultado" />
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@id/tvVisualizadorResultado"
+        tools:text="2*3+6/2-9" />
 
     <TextView
         android:id="@+id/tvVisualizadorResultado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="end|center"
         android:minHeight="50dp"
-        app:layout_constraintBottom_toTopOf="@id/btnLimpiar" />
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@id/btnLimpiar"
+        tools:text="0" />
 
     <Button
         android:id="@+id/btnLimpiar"
