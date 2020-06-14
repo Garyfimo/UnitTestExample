@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: "com.vanniktech.android.junit.jacoco"
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -89,4 +90,20 @@ dependencies {
     androidTestImplementation deps.instrumentationTest.espressoIntents
     androidTestImplementation deps.instrumentationTest.espressoIdlingConcurrent
     androidTestImplementation deps.instrumentationTest.core
+}
+
+junitJacoco {
+    jacocoVersion = '0.8.2'
+    ignoreProjects = []
+    excludes = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$$*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*$Lambda$*.*', // Jacoco can not handle several "$" in class name.
+            '**/*$inlined$*.*' // Kotlin specific, Jacoco can not handle several "$" in class name.
+    ]
+    includeNoLocationClasses = false
+    includeInstrumentationCoverageInMergedReport = true
 }
