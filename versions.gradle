@@ -20,6 +20,7 @@ versions.androidxTestEspresso = "3.1.0"
 versions.androidxTest = "1.2.0"
 versions.androidxTestCore = "1.2.0"
 versions.androidxTestExt = "1.1.0"
+versions.jacocoAndroid = "0.16.0"
 
 def deps = [:]
 
@@ -74,6 +75,7 @@ deps.firebase = firebase
 
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.google_services = "com.google.gms:google-services:$versions.google_services"
+deps.jacoco_android = "com.vanniktech:gradle-android-junit-jacoco-plugin:$versions.jacocoAndroid"
 ext.deps = deps
 
 
