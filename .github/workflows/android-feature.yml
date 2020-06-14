@@ -13,8 +13,31 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v1.3.0
       with: 
         java-version:  1.8
-    - name : Unit tests
-      run : bash ./gradlew test --stacktrace
+    - name: Unit tests
+      run: bash ./gradlew clean jacocoTestReportDebug --stacktrace
+
+    - name: Unit tests result
+      uses: actions/upload-artifact@v2
+      with:
+        name: unit-tests-results
+        path: app/build/reports/jacoco/debug/index.html
+
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1.3.0
+        with:
+          java-version:  1.8
+      - name: Lint debug flavor
+        run: bash ./gradlew lintDebug --stacktrace
+      - name: Lint results
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: app/build/reports/lint-results-debug.html
