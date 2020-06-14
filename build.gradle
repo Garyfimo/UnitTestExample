@@ -6,11 +6,25 @@ buildscript {
     dependencies {
         classpath deps.android_gradle_plugin
         classpath deps.kotlin.kotlin_gradle_plugin
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath deps.google_services
+        classpath deps.jacoco_android
     }
     repositories {
         google()
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.7.1"
+}
+
+sonarqube {
+    properties {
+        property 'sonar.organization', "garyfimo"
+        property 'sonar.projectKey', "Garyfimo_UnitTestExample"
+        property 'sonar.host.url', "https://sonarcloud.io"
+        property 'sonar.jacoco.reportPaths', "build/jacoco/testDebugUnitTest.exec"
+        property 'sonar.coverage.exclusions', "**/model/**"
     }
 }
 

@@ -4,7 +4,8 @@ ext.deps = [:]
 //def means we're making a local variable. We'll use this map to build our deps key/value
 //pairs below
 def versions = [:]
-
+versions.google_services = "4.3.3"
+versions.firebase_analytics = "17.2.2"
 versions.lifecycle = "2.0.0-rc01"
 versions.constraint_layout = "2.0.0-alpha2"
 versions.coroutine_version = "1.0.1"
@@ -19,6 +20,7 @@ versions.androidxTestEspresso = "3.1.0"
 versions.androidxTest = "1.2.0"
 versions.androidxTestCore = "1.2.0"
 versions.androidxTestExt = "1.1.0"
+versions.jacocoAndroid = "0.16.0"
 
 def deps = [:]
 
@@ -67,8 +69,13 @@ build_versions.min_sdk = 21
 build_versions.target_sdk = 29
 ext.build_versions = build_versions
 
+def firebase = [:]
+firebase.analytics = "com.google.firebase:firebase-analytics:$versions.firebase_analytics"
+deps.firebase = firebase
 
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.google_services = "com.google.gms:google-services:$versions.google_services"
+deps.jacoco_android = "com.vanniktech:gradle-android-junit-jacoco-plugin:$versions.jacocoAndroid"
 ext.deps = deps
 
 
