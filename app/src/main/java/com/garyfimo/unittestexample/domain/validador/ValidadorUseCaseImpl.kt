@@ -102,7 +102,7 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
     private fun finNoValido(expresion: String): Boolean {
         return when {
             expresion.endsWith("*") -> true
-            expresion.endsWith("*/") -> true
+            expresion.endsWith("/") -> true
             expresion.endsWith("+") -> true
             expresion.endsWith("-") -> true
             expresion.endsWith(".") -> true
@@ -113,7 +113,7 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
     private fun comienzoNoValido(expresion: String): Boolean {
         return when {
             expresion.startsWith("*") -> true
-            expresion.startsWith("*/") -> true
+            expresion.startsWith("/") -> true
             expresion.startsWith("+") -> true
             expresion.startsWith("-") -> true
             expresion.startsWith(".") -> true

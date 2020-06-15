@@ -38,8 +38,19 @@ internal class CalculadorUseCaseImplTest {
     }
 
     @Test
-    fun `Evalua expresion division con segundo operando cero`() = runBlocking {
+    fun `Evalua expresion division prioritaria  con segundo operando cero`() = runBlocking {
         val expresionNoValida = "1/0"
+        val resultadoObtenido = calculadorUseCase.evaluarExpresion(expresionNoValida)
+
+        if (resultadoObtenido is ResultadoEvaluacion.Error)
+            assertTrue(resultadoObtenido.error is ErrorEvaluacion.ErrorComputacional)
+        else
+            assertTrue(false)
+    }
+
+    @Test
+    fun `Evalua expresion division no prioritaria  con segundo operando cero`() = runBlocking {
+        val expresionNoValida = "4+3-1/0"
         val resultadoObtenido = calculadorUseCase.evaluarExpresion(expresionNoValida)
 
         if (resultadoObtenido is ResultadoEvaluacion.Error)
