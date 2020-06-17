@@ -27,9 +27,9 @@ class MainViewModel(private val evaluadorUseCase: EvaluadorUseCase) : ViewModel(
             is ViewEvent.ClickNumero -> agregarNumero(viewEvent.numero.valor)
             is ViewEvent.ClickOperador -> agregarOperador(viewEvent.operador.valor)
             is ViewEvent.ClickUtilitario -> agregarUtilitario(viewEvent.utilitario.valor)
+            ViewEvent.ClickBorrar -> borrarUltimoCaracter()
             ViewEvent.ClickEvaluar -> evaluarExpresion()
             ViewEvent.ClickLimpiar -> limpiarExpresion()
-            ViewEvent.ClickBorrar -> borrarUltimoCaracter()
         }
         _operacion.value = expresionOperacion
     }

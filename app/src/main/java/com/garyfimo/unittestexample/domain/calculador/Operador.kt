@@ -6,10 +6,8 @@ data class Operador(val valor: String) {
 
     private fun checkPrioridad(valor: String): Boolean {
         return when (valor) {
-            "*" -> true
-            "/" -> true
-            "+" -> false
-            "-" -> false
+            in arrayOf("*", "/") -> true
+            in arrayOf("+", "-") -> false
             else -> throw IllegalArgumentException("Operador no reconocido")
         }
     }

@@ -1,6 +1,4 @@
 
-n
->app/src/main/java/com/garyfimo/unittestexample/MainActivity.kt,9/c/9c3c91c255fee7dda448e3782379e40234d3159d
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 ?
@@ -45,3 +43,25 @@ Oapp/src/androidTest/java/com/garyfimo/unittestexample/util/ScreenshotWatcher.kt
 Papp/src/androidTest/java/com/garyfimo/unittestexample/ExampleInstrumentedTest.kt,7/f/7f43df5744f4a2210f6dd1882c9b8842aabd6619
 y
 Iapp/src/androidTest/java/com/garyfimo/unittestexample/MainActivityTest.kt,9/6/96946f07fc4f243dbb00487a3ce7ba7b2f5d9526
+A
+gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
+?
+settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
+U
+%.github/workflows/android-feature.yml,8/2/824fa887b03efe9524f583b3646fab448b5717e9
+T
+$.github/workflows/android-master.yml,a/0/a0b94726007cfee893ecd1314ad18480bf7c076b
+z
+Japp/src/main/java/com/garyfimo/unittestexample/ui/util/StringExtensions.kt,d/b/db8aaf4a8a0efb3255369ffc95228dc5e5e21297
+t
+Dapp/src/main/java/com/garyfimo/unittestexample/ui/util/Operadores.kt,9/1/914df1885ec45c6a02d11b82533fe007ff73a475
+=
+jacoco.gradle,0/7/072d9586ba93313d149c3002cf4bf43276b1161c
+v
+Fapp/src/test/java/com/garyfimo/unittestexample/ui/MainViewModelTest.kt,5/7/575552a451462f593b8dabf7c76fd9f4825afc35
+r
+Bapp/src/main/java/com/garyfimo/unittestexample/ui/MainViewModel.kt,9/2/92130abe1036903d35572cf122f2ff862bc41a24
+s
+Capp/src/main/java/com/garyfimo/unittestexample/ui/util/ViewEvent.kt,7/3/738a76780efbb42a01a8ecba9d25057ed8fcc763
+q
+Aapp/src/main/java/com/garyfimo/unittestexample/ui/MainActivity.kt,4/e/4ec88db317ae511e84f89f0c847939f21ced41d8

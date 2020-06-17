@@ -16,13 +16,30 @@ internal class OperadorTest {
     }
 
     @Test
-    fun `Verifica prioridad de los operadores`() {
-        val operadores = arrayOf("*", "/", "+", "-")
+    fun `Verifica que multiplicacion sea prioritario`() {
+        val operadorMultiplicacion = "*"
 
-        assertTrue(Operador(operadores[0]).evaluarPrimero)
-       // assertTrue(Operador(operadores[1]).evaluarPrimero)
-       // assertFalse(Operador(operadores[2]).evaluarPrimero)
-       // assertFalse(Operador(operadores[3]).evaluarPrimero)
+        assertTrue(Operador(operadorMultiplicacion).evaluarPrimero)
+    }
 
+    @Test
+    fun `Verifica que division sea prioritario`() {
+        val operadorDivision = "/"
+
+        assertTrue(Operador(operadorDivision).evaluarPrimero)
+    }
+
+    @Test
+    fun `Verifica que suma no sea prioritario`() {
+        val operadorSuma = "+"
+
+        assertFalse(Operador(operadorSuma).evaluarPrimero)
+    }
+
+    @Test
+    fun `Verifica que resta no sea prioritario`() {
+        val operadorResta = "-"
+
+        assertFalse(Operador(operadorResta).evaluarPrimero)
     }
 }

@@ -1,7 +1,7 @@
 apply plugin: "com.vanniktech.android.junit.jacoco"
 
 junitJacoco {
-    jacocoVersion = '0.8.2'
+    jacocoVersion = '0.8.5'
     ignoreProjects = []
     excludes = [
             '**/R.class',
@@ -9,6 +9,8 @@ junitJacoco {
             '**/*$$*',
             '**/BuildConfig.*',
             '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*',
             '**/*$Lambda$*.*', // Jacoco can not handle several "$" in class name.
             '**/*$inlined$*.*' // Kotlin specific, Jacoco can not handle several "$" in class name.
     ]
