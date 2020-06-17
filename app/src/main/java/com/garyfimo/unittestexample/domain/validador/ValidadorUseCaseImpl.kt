@@ -30,10 +30,10 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
 
     private fun tienePuntoDecimalAntesDeOperador(expresion: String): Boolean {
         expresion.indices.forEach {
-            if (it < expresion.lastIndex) {
-                if (esPuntoDecimalAntesDeOperador(expresion[it], expresion[it + 1]))
-                    return true
-            }
+            if (it < expresion.lastIndex &&
+                esPuntoDecimalAntesDeOperador(expresion[it], expresion[it + 1])
+            )
+                return true
         }
         return false
     }
@@ -44,10 +44,10 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
 
     private fun tienePuntoDecimalDespuesDeOperador(expresion: String): Boolean {
         expresion.indices.forEach {
-            if (it < expresion.lastIndex) {
-                if (esPuntoDecimalDespuesDeOperador(expresion[it], expresion[it + 1]))
-                    return true
-            }
+            if (it < expresion.lastIndex &&
+                esPuntoDecimalDespuesDeOperador(expresion[it], expresion[it + 1])
+            )
+                return true
         }
         return false
     }
@@ -58,10 +58,10 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
 
     private fun tieneDosPuntosDecimalesContinuos(expresion: String): Boolean {
         expresion.indices.forEach {
-            if (it < expresion.lastIndex) {
-                if (esPuntoDecimalContinuo(expresion[it], expresion[it + 1]))
-                    return true
-            }
+            if (it < expresion.lastIndex &&
+                esPuntoDecimalContinuo(expresion[it], expresion[it + 1])
+            )
+                return true
         }
         return false
     }
@@ -76,10 +76,10 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
 
     private fun tieneOperadoresContinuos(expresion: String): Boolean {
         expresion.indices.forEach {
-            if (it < expresion.lastIndex) {
-                if (esOperadorContinuo(expresion[it], expresion[it + 1]))
-                    return true
-            }
+            if (it < expresion.lastIndex &&
+                esOperadorContinuo(expresion[it], expresion[it + 1])
+            )
+                return true
         }
         return false
     }
@@ -89,35 +89,14 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
     }
 
     private fun esOperador(operador: Char): Boolean {
-        return when (operador) {
-            '*' -> true
-            '/' -> true
-            '+' -> true
-            '-' -> true
-            else -> false
-
-        }
+        return operador in arrayOf('*', '/', '+', '-')
     }
 
     private fun finNoValido(expresion: String): Boolean {
-        return when {
-            expresion.endsWith("*") -> true
-            expresion.endsWith("*/") -> true
-            expresion.endsWith("+") -> true
-            expresion.endsWith("-") -> true
-            expresion.endsWith(".") -> true
-            else -> false
-        }
+        return expresion.last() in arrayOf('*', '/', '+', '-', '.')
     }
 
     private fun comienzoNoValido(expresion: String): Boolean {
-        return when {
-            expresion.startsWith("*") -> true
-            expresion.startsWith("*/") -> true
-            expresion.startsWith("+") -> true
-            expresion.startsWith("-") -> true
-            expresion.startsWith(".") -> true
-            else -> false
-        }
+        return expresion.first() in arrayOf('*', '/', '+', '-', '.')
     }
 }

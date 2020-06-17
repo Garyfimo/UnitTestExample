@@ -1,23 +1,16 @@
 package com.garyfimo.unittestexample.domain.validador
 
 import com.garyfimo.unittestexample.domain.evaluador.ResultadoEvaluacion
-import com.garyfimo.unittestexample.domain.util.expresionNoValida
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertTrue
 
 internal class ValidadorUseCaseImplTest {
 
+    private val mensajeExpresionNoValida = "Expresion No Valida."
+
     private val expresionSimple = "4+3.2"
     private val expresionCompleja = "4+3.2*2+6.6/3-2"
-
-    private val primeraExpresionNoValida = "9+"
-    private val segundaExpresionNoValida = "-9"
-    private val terceraExpresionNoValida = "9..0+1"
-    private val cuartaExpresionNoValida = "3*/3"
-    private val quintaExpresionNoValida = "."
-    private val sextaExpresionNoValida = "2/.0"
-    private val septimaExpresionNoValida = "2./0"
 
     private val validadorUseCase by lazy {
         ValidadorUseCaseImpl()
@@ -42,51 +35,124 @@ internal class ValidadorUseCaseImplTest {
     }
 
     @Test
-    fun `Validar primera expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(primeraExpresionNoValida)
-        if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+    fun `Validar que expresion no empiece con operador`() = runBlocking {
+        val expresionMultiplicacion = "*9"
+        val resultadoMultiplicacion = validadorUseCase.validarExpresion(expresionMultiplicacion)
+        if (resultadoMultiplicacion is ResultadoEvaluacion.Error)
+            assertTrue(resultadoMultiplicacion.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionDivision = "/9"
+        val resultadoDivision = validadorUseCase.validarExpresion(expresionDivision)
+        if (resultadoDivision is ResultadoEvaluacion.Error)
+            assertTrue(resultadoDivision.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionSuma = "+9"
+        val resultadoSuma = validadorUseCase.validarExpresion(expresionSuma)
+        if (resultadoSuma is ResultadoEvaluacion.Error)
+            assertTrue(resultadoSuma.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionResta = "-9"
+        val resultadoResta = validadorUseCase.validarExpresion(expresionResta)
+        if (resultadoResta is ResultadoEvaluacion.Error)
+            assertTrue(resultadoResta.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar segunda expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(segundaExpresionNoValida)
-        if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+    fun `Validar que expresion no termine con operador`() = runBlocking {
+        val expresionMultiplicacion = "9*"
+        val resultadoMultiplicacion = validadorUseCase.validarExpresion(expresionMultiplicacion)
+        if (resultadoMultiplicacion is ResultadoEvaluacion.Error)
+            assertTrue(resultadoMultiplicacion.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionDivision = "9/"
+        val resultadoDivision = validadorUseCase.validarExpresion(expresionDivision)
+        if (resultadoDivision is ResultadoEvaluacion.Error)
+            assertTrue(resultadoDivision.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionSuma = "9+"
+        val resultadoSuma = validadorUseCase.validarExpresion(expresionSuma)
+        if (resultadoSuma is ResultadoEvaluacion.Error)
+            assertTrue(resultadoSuma.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+
+        val expresionResta = "9-"
+        val resultadoResta = validadorUseCase.validarExpresion(expresionResta)
+        if (resultadoResta is ResultadoEvaluacion.Error)
+            assertTrue(resultadoResta.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar tercera expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(terceraExpresionNoValida)
+    fun `Validar que expresion no tenga dos puntos continuos`() = runBlocking {
+        val expresionConDosPuntosContinuos = "0..9"
+        val resultado = validadorUseCase.validarExpresion(expresionConDosPuntosContinuos)
         if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar cuarta expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(cuartaExpresionNoValida)
+    fun `Validar que expresion no tenga dos operadores continuos`() = runBlocking {
+        val expresionConDosOperadoresContinuos = "3*/3"
+        val resultado = validadorUseCase.validarExpresion(expresionConDosOperadoresContinuos)
         if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar quinta expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(quintaExpresionNoValida)
+    fun `Validar que expresion no empiece con punto`() = runBlocking {
+        val expresionEmpiezaConPunto = ".9"
+        val resultado = validadorUseCase.validarExpresion(expresionEmpiezaConPunto)
         if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar sexta expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(sextaExpresionNoValida)
+    fun `Validar que expresion no termine con punto`() = runBlocking {
+        val expresionTerminaConPunto = "9."
+        val resultado = validadorUseCase.validarExpresion(expresionTerminaConPunto)
         if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 
     @Test
-    fun `Validar septima expresion no valida`() = runBlocking {
-        val resultado = validadorUseCase.validarExpresion(septimaExpresionNoValida)
+    fun `Validar que expresion no tenga punto antes de operador`() = runBlocking {
+        val expresionConPuntoAntesDeOperador = "2./0"
+        val resultado = validadorUseCase.validarExpresion(expresionConPuntoAntesDeOperador)
         if (resultado is ResultadoEvaluacion.Error)
-            assertTrue(resultado.error.message == expresionNoValida)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
+    }
+
+    @Test
+    fun `Validar que expresion no tenga punto despues de operador`() = runBlocking {
+        val expresionConPuntoDespuesDeOperador = "2/.0"
+        val resultado = validadorUseCase.validarExpresion(expresionConPuntoDespuesDeOperador)
+        if (resultado is ResultadoEvaluacion.Error)
+            assertTrue(resultado.error.message == mensajeExpresionNoValida)
+        else
+            assertTrue(false)
     }
 }

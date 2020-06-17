@@ -110,15 +110,15 @@ internal class MainViewModelTest {
 
     @Test
     fun `Verificar que borre caracteres al dar click en borrar`() {
-            val expresionEsperada = "1.0"
-            mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.UNO))
-            mainViewModel.onClick(ViewEvent.ClickUtilitario(Utilitarios.PUNTO))
-            mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.CERO))
-            mainViewModel.onClick(ViewEvent.ClickOperador(Operadores.DIVISION))
-            mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.DOS))
-            mainViewModel.onClick(ViewEvent.ClickBorrar)
-            mainViewModel.onClick(ViewEvent.ClickBorrar)
+        val expresionEsperada = "1.0/2"
+        mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.UNO))
+        mainViewModel.onClick(ViewEvent.ClickUtilitario(Utilitarios.PUNTO))
+        mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.CERO))
+        mainViewModel.onClick(ViewEvent.ClickOperador(Operadores.DIVISION))
+        mainViewModel.onClick(ViewEvent.ClickNumero(Numeros.DOS))
+        mainViewModel.onClick(ViewEvent.ClickOperador(Operadores.SUMA))
+        mainViewModel.onClick(ViewEvent.ClickBorrar)
 
-            assertEquals(expresionEsperada, mainViewModel.operacion.value)
-        }
+        assertEquals(expresionEsperada, mainViewModel.operacion.value)
+    }
 }

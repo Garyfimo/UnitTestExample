@@ -9,7 +9,8 @@ class EvaluadorUseCaseImpl(
 ) : EvaluadorUseCase {
 
     override suspend fun evaluarExpresion(expresion: String): ResultadoEvaluacion<Exception, String> {
-
+        val montanias = mutableListOf<Int>()
+        montanias.reversed().forEach {  }
         return when (val validarExpresion = validarUseCase.validarExpresion(expresion)) {
             is ResultadoEvaluacion.Valor -> calculadorUseCase.evaluarExpresion(expresion)
             is ResultadoEvaluacion.Error -> validarExpresion
