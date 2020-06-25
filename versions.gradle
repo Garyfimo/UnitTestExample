@@ -5,7 +5,9 @@ ext.deps = [:]
 //pairs below
 def versions = [:]
 versions.google_services = "4.3.3"
-versions.firebase_analytics = "17.2.2"
+versions.firebase_analytics = "17.4.3"
+versions.firebase_crashlytics = "17.1.0"
+versions.crashlytics_gradle = "2.2.0"
 versions.lifecycle = "2.0.0-rc01"
 versions.constraint_layout = "2.0.0-alpha2"
 versions.coroutine_version = "1.0.1"
@@ -71,10 +73,12 @@ ext.build_versions = build_versions
 
 def firebase = [:]
 firebase.analytics = "com.google.firebase:firebase-analytics:$versions.firebase_analytics"
+firebase.crashlytics = "com.google.firebase:firebase-crashlytics:$versions.firebase_crashlytics"
 deps.firebase = firebase
 
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.google_services = "com.google.gms:google-services:$versions.google_services"
+deps.crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:$versions.crashlytics_gradle"
 deps.jacoco_android = "com.vanniktech:gradle-android-junit-jacoco-plugin:$versions.jacocoAndroid"
 ext.deps = deps
 
