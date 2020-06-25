@@ -6,7 +6,6 @@ buildscript {
     dependencies {
         classpath deps.android_gradle_plugin
         classpath deps.kotlin.kotlin_gradle_plugin
-        classpath deps.google_services
         classpath deps.jacoco_android
     }
     repositories {
