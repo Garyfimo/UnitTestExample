@@ -55,7 +55,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_AUTH }}
           packageName: com.garyfimo.unittestexample
-          releaseFile: app/release/app-release.apk
+          releaseFile: app/build/outputs/apk/release/app-release.apk
           track: production
           userFraction: 0.15
           whatsNewDirectory: whatsnew
