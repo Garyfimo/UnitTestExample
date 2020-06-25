@@ -50,6 +50,9 @@ class MainViewModel(private val evaluadorUseCase: EvaluadorUseCase) : ViewModel(
     }
 
     private fun controlarError(error: Exception) {
+        if (error is ErrorEvaluacion.ErrorExpresionVacia)
+            actualizarResultado("")
+
         if (error is ErrorEvaluacion.ErrorComputacional)
             actualizarResultado("No se puede dividir por cero")
 

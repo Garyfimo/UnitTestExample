@@ -50,6 +50,13 @@ internal class MainActivityTest {
     private val tvVisualizadorResultado = viewWithId(R.id.tvVisualizadorResultado)
 
     @Test
+    fun verificarAlDarClicEnIgualYNoHayExpresionNoSeMuestreNada() {
+        val valorEsperado = ""
+        btnIgual.click()
+        tvVisualizadorResultado.checkMatches(ViewMatchers.withText(valorEsperado))
+    }
+
+    @Test
     fun verificarQueBorreUltimosCaracteres() {
         val valorEsperado = "1"
         btnUno.click()
