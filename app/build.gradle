@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
 apply from: '../jacoco.gradle'
 
 android {
@@ -12,8 +11,8 @@ android {
         applicationId "com.garyfimo.unittestexample"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.1.1"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -71,7 +70,6 @@ dependencies {
     implementation deps.kotlin.coroutines_android
     implementation deps.kotlin.kotlin_jre
     implementation deps.android.fragment_ktx
-    implementation deps.firebase.analytics
 
     testImplementation deps.unitTest.coroutine_test
     testImplementation deps.unitTest.android_arch_core
