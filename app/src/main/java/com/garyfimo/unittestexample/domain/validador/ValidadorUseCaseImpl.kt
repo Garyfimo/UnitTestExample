@@ -7,6 +7,9 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
 
     override suspend fun validarExpresion(expresion: String): ResultadoEvaluacion<Exception, Boolean> {
 
+        if (expresionVacia(expresion))
+            return ResultadoEvaluacion.build { false }
+
         if (comienzoNoValido(expresion))
             return ResultadoEvaluacion.build { throw  ErrorEvaluacion.ErrorValidacion() }
 
@@ -26,6 +29,10 @@ class ValidadorUseCaseImpl : ValidadorUseCase {
             return ResultadoEvaluacion.build { throw  ErrorEvaluacion.ErrorValidacion() }
 
         return ResultadoEvaluacion.build { true }
+    }
+
+    private fun expresionVacia(expresion: String): Boolean {
+        return expresion.isEmpty()
     }
 
     private fun tienePuntoDecimalAntesDeOperador(expresion: String): Boolean {

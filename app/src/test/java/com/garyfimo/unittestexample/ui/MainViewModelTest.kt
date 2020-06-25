@@ -34,6 +34,16 @@ internal class MainViewModelTest {
     }
 
     @Test
+    fun `Verificar que expresion vacia devuelva vacio`() =
+        coroutineRule.testDispatcher.runBlockingTest {
+            val expresionVacia = ""
+            val resultado = ""
+            coEvery { evaluadorUseCase.evaluarExpresion(expresionVacia) } returns ResultadoEvaluacion.build { throw ErrorEvaluacion.ErrorExpresionVacia() }
+            mainViewModel.onClick(ViewEvent.ClickEvaluar)
+            assertEquals(resultado, mainViewModel.resultado.value)
+        }
+
+    @Test
     fun `Verifiar que expresion simple evaluada de resultado correcto`() =
         coroutineRule.testDispatcher.runBlockingTest {
             val expresionSimple = "2+2"

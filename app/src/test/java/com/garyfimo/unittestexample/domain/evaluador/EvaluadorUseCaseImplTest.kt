@@ -27,6 +27,21 @@ internal class EvaluadorUseCaseImplTest {
     private val expresionNoCorrectaDivididoPorCero = "4+3.2*2+6.6/0-2"
 
     @Test
+    fun `Evalua expresion vacia y devuelve error`() = runBlocking {
+        val expresionVacia = ""
+        coEvery { validarUseCase.validarExpresion(expresionVacia) } returns ResultadoEvaluacion.build { false }
+
+        val resultado = evaluadorUseCase.evaluarExpresion(expresionVacia)
+
+        coVerify { validarUseCase.validarExpresion(expresionVacia) }
+
+        if (resultado is ResultadoEvaluacion.Error)
+            assertTrue(resultado.error is ErrorEvaluacion.ErrorExpresionVacia)
+        else
+            assertTrue(false)
+    }
+
+    @Test
     fun `Evalua expresion correcta y devuelve resultado`() = runBlocking {
         coEvery { validarUseCase.validarExpresion(expresionCorrecta) } returns ResultadoEvaluacion.build { true }
         coEvery { calculadorUseCase.evaluarExpresion(expresionCorrecta) } returns ResultadoEvaluacion.build { respuestaEsperada }

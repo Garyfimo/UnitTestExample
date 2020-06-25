@@ -3,6 +3,7 @@ package com.garyfimo.unittestexample.domain.validador
 import com.garyfimo.unittestexample.domain.evaluador.ResultadoEvaluacion
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 
 internal class ValidadorUseCaseImplTest {
@@ -14,6 +15,16 @@ internal class ValidadorUseCaseImplTest {
 
     private val validadorUseCase by lazy {
         ValidadorUseCaseImpl()
+    }
+
+    @Test
+    fun `Validar que expresion vacia no sea valida`() = runBlocking{
+        val expresionVacia = ""
+        val resultado = validadorUseCase.validarExpresion(expresionVacia)
+        if(resultado is ResultadoEvaluacion.Valor)
+            assertFalse(resultado.valor)
+        else
+            assertFalse(true)
     }
 
     @Test
