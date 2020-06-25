@@ -52,19 +52,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8 
-      - name: Update release version
-        run: |
-          latest_release="$(git describe --match 
-          '[0-9]*\.[0-9]*\.[0-9]*' --abbrev=0 --tags)"
-          change_to="versionName "\"$latest_release"\""
-          sed -i "0,/versionName/{s/.*versionName.*/$change_to/}" 
-          app/build.gradle
       - name: Build .APK
         run: bash ./gradlew :app:assembleGooglePlay
       - name: Sign Android release
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: app/build/outputs/apk/googlePlay/release
+          releaseDirectory: app/release
           signingKeyBase64: ${{ secrets.APP_KEY }}
           alias: ${{ secrets.APP_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.APP_KEY_STORE_PASSWORD }}
@@ -90,7 +83,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_AUTH }}
           packageName: com.garyfimo.unittestexample
-          releaseFile: app-release/app-googlePlay-release-unsigned-signed.apk
+          releaseFile: app/release/app-release.apk
           track: production
           userFraction: 0.15
           whatsNewDirectory: whatsnew
