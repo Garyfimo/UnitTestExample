@@ -58,4 +58,4 @@ jobs:
           releaseFile: app-release
           track: production
           userFraction: 0.15
-          whatsNewDirectory: whatsnew
+          whatsNewDirectory: whatsNew
