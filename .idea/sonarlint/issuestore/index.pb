@@ -39,8 +39,6 @@ Mapp/src/main/java/com/garyfimo/unittestexample/domain/util/ErrorEvaluacion.kt,
 Papp/src/androidTest/java/com/garyfimo/unittestexample/util/EspressoExtensions.kt,a/9/a98604f135c1e46f8813c3f999daedf326faaee5
 
 Oapp/src/androidTest/java/com/garyfimo/unittestexample/util/ScreenshotWatcher.kt,b/0/b0e20bd74e7c83a89f90c629b533b9f4bfc14da7
-€
-Papp/src/androidTest/java/com/garyfimo/unittestexample/ExampleInstrumentedTest.kt,7/f/7f43df5744f4a2210f6dd1882c9b8842aabd6619
 y
 Iapp/src/androidTest/java/com/garyfimo/unittestexample/MainActivityTest.kt,9/6/96946f07fc4f243dbb00487a3ce7ba7b2f5d9526
 A
@@ -65,3 +63,9 @@ s
 Capp/src/main/java/com/garyfimo/unittestexample/ui/util/ViewEvent.kt,7/3/738a76780efbb42a01a8ecba9d25057ed8fcc763
 q
 Aapp/src/main/java/com/garyfimo/unittestexample/ui/MainActivity.kt,4/e/4ec88db317ae511e84f89f0c847939f21ced41d8
+q
+Aapp/src/main/java/com/garyfimo/unittestexample/ui/util/Numeros.kt,d/e/de4358e68192d104ff89860ae6e469706be67738
+G
+whatsNew/whatsnew-es-PE,9/8/988063bbeb5daf52a55f7bf7e8513bad64ffd909
+X
+(.github/workflows/production-release.yml,7/6/76a6189bd245f395d30f627ab29c20fa91d76a0f
