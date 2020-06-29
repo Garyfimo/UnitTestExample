@@ -37,7 +37,7 @@ jobs:
       - name: Upload app APK
         uses: actions/upload-artifact@v1
         with:
-          name: app-release
+          name: app-release.apk
           path: ${{ env.SIGNED_RELEASE_FILE }}
       
   uploadAPK:
@@ -49,13 +49,13 @@ jobs:
       - name: Download app APK
         uses: actions/download-artifact@v1
         with:
-         name: app-release
+         name: app-release.apk
       - name: Upload Android Release to Play Store
         uses: r0adkll/upload-google-play@v1.0.4
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_AUTH }}
           packageName: com.garyfimo.unittestexample
-          releaseFile: app-release
+          releaseFile: app-release.apk
           track: production
           userFraction: 0.15
           whatsNewDirectory: whatsNew
