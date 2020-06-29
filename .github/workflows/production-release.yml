@@ -53,7 +53,7 @@ jobs:
       - name: Upload Android Release to Play Store
         uses: r0adkll/upload-google-play@v1.0.4
         with:
-          serviceAccountJson: ${{ secrets.GOOGLE_PLAY_AUTH }}
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_AUTH }}
           packageName: com.garyfimo.unittestexample
           releaseFile: app-release
           track: production
