@@ -34,6 +34,7 @@ jobs:
           alias: ${{ secrets.APP_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.APP_KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.APP_KEY_PASSWORD }}
+          BUILD_TOOLS_VERSION: "30.0.2"
       - name: Upload app APK
         uses: actions/upload-artifact@v1
         with:
