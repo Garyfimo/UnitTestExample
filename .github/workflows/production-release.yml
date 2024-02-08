@@ -57,7 +57,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_AUTH }}
           packageName: com.garyfimo.unittestexample
-          releaseFiles: app-release/app-release-unsigned-signed.apk
+          releaseFile: app-release/app-release-unsigned-signed.apk
           track: production
           status: inProgress
           userFraction: 0.15
