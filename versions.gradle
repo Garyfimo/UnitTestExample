@@ -51,8 +51,8 @@ deps.kotlin = kotlin
 
 def build_versions = [:]
 build_versions.min_sdk = 31
-build_versions.target_sdk = 33
-build_versions.compileSdk = 33
+build_versions.target_sdk = 31
+build_versions.compileSdk = 31
 ext.build_versions = build_versions
 
 def firebase = [:]
