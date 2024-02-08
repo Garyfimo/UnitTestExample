@@ -62,3 +62,5 @@ jobs:
           status: inProgress
           userFraction: 0.15
           whatsNewDirectory: whatsNew
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
