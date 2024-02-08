@@ -3,17 +3,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics'
-apply from: '../jacoco.gradle'
 
 android {
-    compileSdkVersion build_versions.target_sdk
+    compileSdkVersion build_versions.compileSdk
 
     defaultConfig {
         applicationId "com.garyfimo.unittestexample"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode 4
-        versionName "1.1.2"
+        versionCode 5
+        versionName "1.1.19"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -31,8 +30,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility 11
+        targetCompatibility 11
     }
 
     packagingOptions {
@@ -40,26 +39,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    testOptions {
-        execution 'ANDROIDX_TEST_ORCHESTRATOR'
-        unitTests.returnDefaultValues = true
-    }
-
-    // Gradle automatically adds 'android.test.runner' as a dependency.
-    useLibrary 'android.test.runner'
-
-    useLibrary 'android.test.base'
-    useLibrary 'android.test.mock'
-
-    testOptions.unitTests.all {
-        useJUnitPlatform()
-
-        testLogging {
-            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
-        }
+        jvmTarget = "11"
     }
 }
 
@@ -73,22 +53,4 @@ dependencies {
     implementation deps.android.fragment_ktx
     implementation deps.firebase.analytics
     implementation deps.firebase.crashlytics
-
-    testImplementation deps.unitTest.coroutine_test
-    testImplementation deps.unitTest.android_arch_core
-    testImplementation deps.unitTest.junit
-    testRuntimeOnly deps.unitTest.jupiter_engine
-    testRuntimeOnly deps.unitTest.vintage_engine
-    testImplementation deps.unitTest.mockk
-    testImplementation deps.unitTest.kotlin_junit
-
-    androidTestImplementation deps.instrumentationTest.espressoCore
-    androidTestImplementation deps.instrumentationTest.junit
-
-    androidTestImplementation deps.instrumentationTest.runner
-    androidTestImplementation deps.instrumentationTest.rules
-    androidTestImplementation deps.instrumentationTest.espressoContrib
-    androidTestImplementation deps.instrumentationTest.espressoIntents
-    androidTestImplementation deps.instrumentationTest.espressoIdlingConcurrent
-    androidTestImplementation deps.instrumentationTest.core
 }
